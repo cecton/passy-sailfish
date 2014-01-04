@@ -18,5 +18,6 @@ OTHER_FILES += qml/passy.qml \
     qml/pages/AboutPage.qml \
     rpm/passy.yaml \
     passy.desktop \
-    qml/utils.js
+    qml/utils.js \
+    rpm/passy.yaml
 
