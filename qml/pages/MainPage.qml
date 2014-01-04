@@ -76,6 +76,17 @@ Page {
                 }
             }
 
+            function pwdGotoNext() {
+                column.updateHint()
+                keyField.focus = true
+            }
+
+            function copyPassword() {
+                var pwd
+                pwd = Utils.genpass(passwordField.text, keyField.text)
+                Clipboard.text = pwd
+            }
+
             width: page.width
             spacing: Theme.paddingLarge
 
@@ -92,6 +103,10 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Theme.itemSizeLarge*3
                 onClicked: column.updateHint()
+
+                EnterKey.enabled: text || inputMethodComposing
+                EnterKey.iconSource: "image://theme/icon-m-enter-next"
+                EnterKey.onClicked: column.pwdGotoNext()
             }
 
             TextField {
@@ -100,13 +115,16 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Theme.itemSizeLarge*3
                 onClicked: column.updateHint()
+
+                EnterKey.enabled: (passwordField.text && text) || inputMethodComposing
+                EnterKey.onClicked: column.copyPassword()
             }
 
             Button {
                 id: copier
                 text: "Copy"
                 anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: Clipboard.copy(Utils.genpass(passwordField.text, keyField.text))
+                onClicked: column.copyPassword()
             }
 
             Label {
