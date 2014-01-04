@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2013 Jolla Ltd.
-  Contact: Thomas Perl <thomas.perl@jollamobile.com>
+  Copyright (C) 2013 Kristoffer Gronlund
+  Contact: Kristoffer Gronlund <krig@koru.se>
   All rights reserved.
 
   You may use this file under the terms of BSD license as follows:
@@ -28,23 +28,42 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifdef QT_QML_DEBUG
-#include <QtQuick>
-#endif
+import QtQuick 2.0
+import Sailfish.Silica 1.0
 
-#include <sailfishapp.h>
 
-int main(int argc, char *argv[])
-{
-    // SailfishApp::main() will display "qml/template.qml", if you need more
-    // control over initialization, you can use:
-    //
-    //   - SailfishApp::application(int, char *[]) to get the QGuiApplication *
-    //   - SailfishApp::createView() to get a new QQuickView * instance
-    //   - SailfishApp::pathTo(QString) to get a QUrl to a resource file
-    //
-    // To display the view, call "show()" (will show fullscreen on device).
+Page {
+    id: page
 
-    return SailfishApp::main(argc, argv);
+    Column {
+        width: page.width
+        spacing: Theme.paddingLarge
+        anchors.fill: parent
+
+        PageHeader {
+            title: "About Passy"
+        }
+
+        Label {
+            color: Theme.highlightColor
+            font.family: Theme.fontFamilyHeading
+            text: "Passy is a password generator.<br/><br/>" +
+                  "Give it a secret password and a plaintext key, and it " +
+                  "generates a password for you. Hit the button to copy the password.<br/><br/>" +
+                  "<a href=\"http://kri.gs/\">http://kri.gs</a>"
+            anchors.horizontalCenter: parent.horizontalCenter
+            wrapMode: Text.Wrap
+            width: parent.width - 2*Theme.paddingLarge
+            horizontalAlignment: Text.AlignHCenter
+
+            onLinkActivated: {
+                Qt.openUrlExternally(link)
+            }
+        }
+    }
 }
+
+
+
+
 

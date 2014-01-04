@@ -1,6 +1,6 @@
 /*
-  Copyright (C) 2013 Jolla Ltd.
-  Contact: Thomas Perl <thomas.perl@jollamobile.com>
+  Copyright (C) 2013 Kristoffer Gronlund
+  Contact: Kristoffer Gronlund <krig@koru.se>
   All rights reserved.
 
   You may use this file under the terms of BSD license as follows:
@@ -30,7 +30,7 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-
+import "../utils.js" as Utils
 
 Page {
     id: page
@@ -39,11 +39,17 @@ Page {
     SilicaFlickable {
         anchors.fill: parent
 
+
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
         PullDownMenu {
             MenuItem {
-                text: "Show Page 2"
-                onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
+                text: "About"
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+
+            MenuItem {
+                text: "Clear"
+                onClicked: column.clearFields()
             }
         }
 
@@ -55,17 +61,61 @@ Page {
         Column {
             id: column
 
+            function clearFields() {
+                passwordField.text = ""
+                keyField.text = ""
+                hint.text = ""
+            }
+
+            function updateHint() {
+                if (passwordField.text.length > 0) {
+                    hint.text = Utils.genpass(passwordField.text, "foo").substr(0, 6)
+                }
+                else {
+                    hint.text = ""
+                }
+            }
+
             width: page.width
             spacing: Theme.paddingLarge
+
+            anchors.verticalCenter: parent.verticalCenter
+
             PageHeader {
-                title: "passy"
+                title: "Passy"
             }
+
+            TextField {
+                id: passwordField
+                echoMode: TextInput.Password
+                placeholderText: "password"
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: Theme.itemSizeLarge*3
+                onClicked: column.updateHint()
+            }
+
+            TextField {
+                id: keyField
+                placeholderText: "key"
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: Theme.itemSizeLarge*3
+                onClicked: column.updateHint()
+            }
+
+            Button {
+                id: copier
+                text: "Copy"
+                anchors.horizontalCenter: parent.horizontalCenter
+                onClicked: Clipboard.copy(Utils.genpass(passwordField.text, keyField.text))
+            }
+
             Label {
-                x: Theme.paddingLarge
-                text: "Hello Sailors"
-                color: Theme.secondaryHighlightColor
-                font.pixelSize: Theme.fontSizeExtraLarge
+                id: hint
+                text: ""
+                color: Theme.secondaryColor
+                anchors.horizontalCenter: parent.horizontalCenter
             }
+
         }
     }
 }

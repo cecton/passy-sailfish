@@ -6,19 +6,17 @@
 #         - desktop icon filename must be changed
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
-TARGET = jollapp1
+TARGET = passy
 
 CONFIG += sailfishapp
 
-SOURCES += src/jollapp1.cpp
+SOURCES += src/passy.cpp
 
-OTHER_FILES += qml/jollapp1.qml \
+OTHER_FILES += qml/passy.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
-    rpm/jollapp1.spec \
-    rpm/jollapp1.yaml \
-    jollapp1.desktop \
-    rpm/jollapp1.spec \
+    qml/pages/MainPage.qml \
+    qml/pages/AboutPage.qml \
+    rpm/passy.yaml \
+    passy.desktop \
     qml/utils.js
 
