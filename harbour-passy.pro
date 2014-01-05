@@ -6,18 +6,18 @@
 #         - desktop icon filename must be changed
 #         - desktop filename must be changed
 #         - icon definition filename in desktop file must be changed
-TARGET = passy
+TARGET = harbour-passy
 
 CONFIG += sailfishapp
 
-SOURCES += src/passy.cpp
+SOURCES += src/harbour-passy.cpp
 
-OTHER_FILES += qml/passy.qml \
+OTHER_FILES += qml/harbour-passy.qml \
     qml/cover/CoverPage.qml \
     qml/pages/MainPage.qml \
     qml/pages/AboutPage.qml \
-    rpm/passy.yaml \
-    passy.desktop \
+    rpm/harbour-passy.yaml \
+    harbour-passy.desktop \
     qml/utils.js \
-    rpm/passy.yaml
+    rpm/harbour-passy.yaml
 

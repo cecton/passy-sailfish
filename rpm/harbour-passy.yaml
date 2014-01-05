@@ -1,4 +1,4 @@
-Name: passy
+Name: harbour-passy
 Summary: Password generator
 Version: 0.1
 Release: 1
@@ -19,7 +19,7 @@ PkgConfigBR:
 Requires:
 - sailfishsilica-qt5 >= 0.10.9
 Files:
-- /usr/share/passy
+- /usr/share/%{name}
 - '%{_bindir}'
 - '%{_datadir}/%{name}/qml'
 - '%{_datadir}/applications/%{name}.desktop'
