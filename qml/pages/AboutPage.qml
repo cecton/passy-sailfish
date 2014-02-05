@@ -57,16 +57,6 @@ Page {
             width: parent.width - 2*Theme.paddingLarge
             horizontalAlignment: Text.AlignHCenter
         }
-
-
-        TextSwitch {
-            text: "Clear clipboard"
-            checked: clear_clipboard
-            onCheckedChanged: {
-                console.log("Setting clear_clipboard to ", checked);
-                clear_clipboard = checked;
-            }
-        }
     }
 
     Label {

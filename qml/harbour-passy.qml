@@ -34,8 +34,6 @@ import "pages"
 
 ApplicationWindow
 {
-    property bool clear_clipboard: true;
-
     initialPage: Component { MainPage { } }
     cover: Qt.resolvedUrl("cover/CoverPage.qml")
 

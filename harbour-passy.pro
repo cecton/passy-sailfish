@@ -10,8 +10,7 @@ TARGET = harbour-passy
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-passy.cpp \
-    src/appstate.cpp
+SOURCES += src/harbour-passy.cpp
 
 OTHER_FILES += qml/harbour-passy.qml \
     qml/cover/CoverPage.qml \
@@ -22,6 +21,5 @@ OTHER_FILES += qml/harbour-passy.qml \
     qml/utils.js \
     rpm/harbour-passy.yaml
 
-HEADERS += \
-    src/appstate.h
+HEADERS +=
 

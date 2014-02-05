@@ -48,7 +48,7 @@ Page {
             }
 
             MenuItem {
-                text: "Clear"
+                text: "Clear clipboard"
                 onClicked: column.clearFields()
             }
         }
@@ -62,13 +62,8 @@ Page {
             id: column
 
             function clearFields() {
-                passwordField.text = ""
                 keyField.text = ""
-                hint.text = ""
-                if (clear_clipboard) {
-                    console.log("Clearing clipboard...")
-                    Clipboard.text = ""
-                }
+                Clipboard.text = ""
             }
 
             function updateHint() {
