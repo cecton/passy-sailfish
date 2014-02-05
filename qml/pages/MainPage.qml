@@ -65,6 +65,10 @@ Page {
                 passwordField.text = ""
                 keyField.text = ""
                 hint.text = ""
+                if (clear_clipboard) {
+                    console.log("Clearing clipboard...")
+                    Clipboard.text = ""
+                }
             }
 
             function updateHint() {
@@ -115,6 +119,7 @@ Page {
                 anchors.horizontalCenter: parent.horizontalCenter
                 width: Theme.itemSizeLarge*3
                 onClicked: column.updateHint()
+                inputMethodHints: Qt.ImhNoAutoUppercase
 
                 EnterKey.enabled: (passwordField.text && text) || inputMethodComposing
                 EnterKey.onClicked: column.copyPassword()

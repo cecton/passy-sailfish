@@ -31,7 +31,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 
-
 Page {
     id: page
 
@@ -45,20 +44,47 @@ Page {
         }
 
         Label {
-            color: Theme.highlightColor
+            color: Theme.primaryColor
             font.family: Theme.fontFamilyHeading
+            textFormat: Text.RichText
             text: "Passy is a password generator.<br/><br/>" +
                   "Give it a secret password and a plaintext key, and it " +
-                  "generates a password for you. Hit the button to copy the password.<br/><br/>" +
-                  "<a href=\"http://kri.gs/\">http://kri.gs</a>"
-            anchors.horizontalCenter: parent.horizontalCenter
+                  "generates a password for you. Hit the button to copy the password.<br/><br/>"
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+            }
             wrapMode: Text.Wrap
             width: parent.width - 2*Theme.paddingLarge
             horizontalAlignment: Text.AlignHCenter
+        }
 
-            onLinkActivated: {
-                Qt.openUrlExternally(link)
+
+        TextSwitch {
+            text: "Clear clipboard"
+            checked: clear_clipboard
+            onCheckedChanged: {
+                console.log("Setting clear_clipboard to ", checked);
+                clear_clipboard = checked;
             }
+        }
+    }
+
+    Label {
+        color: Theme.primaryColor
+        font.family: Theme.fontFamilyHeading
+        textFormat: Text.RichText
+        text: "<style>a:link { color: " + Theme.highlightColor + "; }</style>" +
+              "<a href=\"http://kri.gs/\">http://kri.gs</a><br/><br/>"
+        anchors {
+            horizontalCenter: parent.horizontalCenter
+            bottom: parent.bottom
+        }
+        wrapMode: Text.Wrap
+        width: parent.width - 2*Theme.paddingLarge
+        horizontalAlignment: Text.AlignHCenter
+
+        onLinkActivated: {
+            Qt.openUrlExternally(link)
         }
     }
 }
