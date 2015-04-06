@@ -30,7 +30,6 @@
 
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../utils.js" as Utils
 
 Page {
     id: page
@@ -68,7 +67,7 @@ Page {
 
             function updateHint() {
                 if (passwordField.text.length > 0) {
-                    hint.text = Utils.genpass(passwordField.text, "foo").substr(0, 6)
+                    hint.text = utils.genpass(passwordField.text, "foo").substr(0, 6)
                 }
                 else {
                     hint.text = ""
@@ -82,7 +81,7 @@ Page {
 
             function copyPassword() {
                 var pwd
-                pwd = Utils.genpass(passwordField.text, keyField.text)
+                pwd = utils.genpass(passwordField.text, keyField.text)
                 Clipboard.text = pwd
             }
 
